@@ -1,218 +1,275 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MaveRick — Terminal</title>
-  <meta name="description" content="MaveRick — API gateway tinkerer. Apigee X, OAuth2, mTLS, OpenAPI. Explore the Apigee-Lab on GitHub." />
-  <!-- Social preview (optional) -->
-  <meta property="og:title" content="MaveRick — Apigee Dev" />
-  <meta property="og:description" content="I build, secure, and monitor API gateways using Google Cloud Apigee." />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #010409;
-      --text: #c9d1d9;
-      --accent: #58a6ff;
-      --muted: #98a5b1;
-      --card: #011627;
-    }
-    * { box-sizing: border-box; }
-    html,body { height: 100%; }
-    body {
-      background: linear-gradient(180deg, #000 0%, #07111a 60%);
-      color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .term {
-      width: min(900px, 92%);
-      border-radius: 8px;
-      padding: 28px;
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
-    }
-    .term .row { display: flex; gap: 14px; align-items: center; }
-    .dots { display: inline-flex; gap: 8px; margin-bottom: 18px; }
-    .dot { width: 12px; height: 12px; border-radius: 50%; display:inline-block; }
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
-    h1 { font-size: 1.6rem; margin: 0; color: #e6eef3; }
-    .meta { color: var(--muted); margin-top: 6px; font-size: 0.9rem; }
-    .terminal-output {
-      background: transparent;
-      border-left: 3px solid rgba(88, 166, 255, 0.12);
-      padding: 18px;
-      margin: 20px 0;
-      border-radius: 6px;
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      font-size: 0.95rem;
-      position: relative;
-      min-height: 120px;
-    }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 18px;
-      background: rgba(190,224,255,0.9);
-      margin-left: 6px;
-      vertical-align: middle;
-      animation: blink 900ms steps(2, start) infinite;
-    }
-    @keyframes blink { to { visibility: hidden; } }
-    .controls { display:flex; gap:10px; align-items:center; margin-top:8px; flex-wrap:wrap; }
-    .btn {
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px; border-radius:6px; background:transparent;
-      border:1px solid rgba(255,255,255,0.04); color:var(--accent);
-      text-decoration:none; cursor:pointer; font:inherit;
-    }
-    .btn:focus { outline:3px solid rgba(88,166,255,0.12); outline-offset:3px; }
-    .copy-feedback { color: #9ee6a5; font-size: 0.9rem; margin-left:6px; display:none; }
-    code { color: #bfe0ff; }
-    .skills { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
-    .skill {
-      padding:6px 10px; border-radius:6px; background:rgba(88,166,255,0.06);
-      border:1px solid rgba(88,166,255,0.08); color:var(--accent); font-size:0.85rem;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MaveRick | Apigee Dev</title>
+    <meta name="description" content="MaveRick — Apigee developer. API Security, Gateways, Observability." />
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* Responsiveness */
-    @media (max-width:520px) {
-      h1 { font-size: 1.25rem; }
-      .terminal-output { font-size: 0.9rem; padding: 14px; }
-      .cursor { height: 16px; }
-    }
-  </style>
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --term-blue: #58a6ff;
+            --term-text: #c9d1d9;
+            --glass-bg: rgba(13, 17, 23, 0.85);
+            --glass-border: rgba(48, 54, 61, 0.8);
+            --accent-red: #EA4335;
+            --muted: #8b949e;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            /* Terminal Scanline Grid Effect */
+            background-image: linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--term-text);
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* The Main Container (Glass + Terminal Frame) */
+        .container {
+            width: 100%;
+            max-width: 700px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background-color: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            position: relative;
+            text-align: center;
+        }
+
+        /* Traffic Lights (Mac Window Style) */
+        .traffic-lights {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 8px;
+        }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        /* Avatar with Glow */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--term-blue);
+            box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+        }
+
+        h1 {
+            color: #f0f6fc;
+            margin: 0 0 8px 0;
+            letter-spacing: -1px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.95em;
+            margin-bottom: 30px;
+            display: block;
+            font-weight: bold;
+        }
+
+        /* The Terminal Output Box */
+        .terminal-box {
+            background: rgba(1, 4, 9, 0.6);
+            border-left: 3px solid var(--term-blue);
+            padding: 20px;
+            border-radius: 6px;
+            text-align: left;
+            margin-bottom: 30px;
+            min-height: 180px; 
+            font-size: 0.9em;
+            line-height: 1.6;
+            white-space: pre-wrap; 
+            color: var(--term-text);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            /* Ensure it grows with text but handles overflow if needed */
+            overflow-x: hidden; 
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--term-blue);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            border-radius: 2px;
+            margin-left: 6px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* dim commands, bright outputs */
+        .prompt-text { color: #6a737d; } 
+        .output-text { color: var(--term-text); font-weight: 600; } 
+
+        /* Tech Badges */
+        .badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+        .badge {
+            background: rgba(56, 139, 253, 0.1);
+            border: 1px solid rgba(56, 139, 253, 0.3);
+            color: var(--term-blue);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Alignment fix for icon spacing */
+        }
+
+        /* Main CTA Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--accent-red), #B31412); /* Google Red */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+        .btn:hover { transform: translateY(-2px); }
+
+        /* Mobile Fixes */
+        @media (max-width: 500px) {
+            .container { padding: 25px; }
+            h1 { font-size: 1.6rem; }
+            .terminal-box { font-size: 0.8em; }
+            .badge { font-size: 0.75em; }
+        }
+    </style>
 </head>
 <body>
-  <main class="term" role="main" aria-labelledby="title">
-    <div class="dots" aria-hidden="true">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
+
+    <div class="container" role="region" aria-label="MaveRick terminal profile">
+        <div class="traffic-lights" aria-hidden="true">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+        </div>
+
+        <img src="https://github.com/SunnyJayaRaj.png" alt="MaveRick" class="avatar">
+
+        <h1>MaveRick</h1>
+        <span class="subtitle"> >_ API Security • Gateways • Observability</span>
+
+        <div class="terminal-box" id="terminal" aria-live="polite" aria-atomic="false"></div>
+
+        <div class="badges" aria-hidden="false">
+            <span class="badge"><i class="fab fa-google"></i> Apigee X</span>
+            <span class="badge"><i class="fas fa-shield-alt"></i> OAuth 2.0</span>
+            <span class="badge"><i class="fas fa-file-code"></i> OpenAPI 3.0</span>
+            <span class="badge"><i class="fas fa-rocket"></i> Postman</span>
+        </div>
+
+        <a href="https://github.com/SunnyJayaRaj/Apigee-Lab" class="btn" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> Explore the Lab
+        </a>
     </div>
 
-    <div class="row" style="align-items:flex-start;">
-      <div style="flex:1">
-        <h1 id="title">MaveRick — Apigee Dev</h1>
-        <div class="meta">API Security • Gateways • Observability</div>
-      </div>
-    </div>
+    <script>
+        // Data Structure for the Terminal
+        const textData = [
+            { type: 'cmd', val: "$ whoami" },
+            { type: 'out', val: "> MaveRick — API Gateway Tinkerer" },
+            { type: 'br' },
+            { type: 'cmd', val: "$ cat mission.txt" },
+            { type: 'out', val: "> Building secure digital gateways." },
+            { type: 'out', val: "> Learning by breaking things (safely)." },
+            { type: 'br' },
+            { type: 'cmd', val: "$ ls projects" },
+            { type: 'out', val: "- Apigee-Lab/" },
+            { type: 'out', val: "- Curious-Explorer/" },
+            { type: 'out', val: "- SunnyJayaRaj.github.io/" }
+        ];
 
-    <!-- Terminal block (typewriter reveals lines) -->
-    <div id="terminal" class="terminal-output" aria-live="polite" aria-atomic="false">
-      <code id="typed"></code><span id="cursor" class="cursor" aria-hidden="true"></span>
-    </div>
+        const terminal = document.getElementById('terminal');
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <div class="skills" aria-hidden="false">
-      <span class="skill">Apigee X</span>
-      <span class="skill">OAuth2</span>
-      <span class="skill">mTLS</span>
-      <span class="skill">OpenAPI 3.0</span>
-      <span class="skill">Postman</span>
-    </div>
+        async function typeLines({ charDelay = 20, lineDelay = 380 } = {}) {
+            terminal.innerHTML = ''; // Clear previous text
+            
+            for (let i = 0; i < textData.length; i++) {
+                const item = textData[i];
 
-    <div class="controls" style="margin-top:14px;">
-      <a id="openLab" class="btn" href="https://github.com/SunnyJayaRaj/Apigee-Lab" target="_blank" rel="noopener">Open Apigee-Lab →</a>
-      <button id="copyBtn" class="btn" type="button" aria-controls="typed">Copy Lab URL</button>
-      <button id="replayBtn" class="btn" type="button">Replay</button>
-      <span id="copied" class="copy-feedback" role="status">Copied!</span>
-    </div>
-  </main>
+                if (item.type === 'br') {
+                    const br = document.createElement('div');
+                    br.innerHTML = '&nbsp;';
+                    terminal.appendChild(br);
+                    if (!prefersReduced) await new Promise(r => setTimeout(r, 120));
+                    continue;
+                }
 
-  <script>
-    // Lines to display in the terminal block
-    const lines = [
-      '$ whoami',
-      '> MaveRick — API gateway tinkerer',
-      '',
-      '$ cat README',
-      '> The digital world speaks in APIs. I build, secure, and monitor the gateways that power apps.',
-      '',
-      '$ ls projects',
-      '- Curious-Explorer/',
-      '- Apigee-Lab/',
-      '- SunnyJayaRaj.github.io/',
-      '',
-      '$ open https://github.com/SunnyJayaRaj/Apigee-Lab'
-    ];
+                // Create the line container
+                const lineEl = document.createElement('div');
+                // Apply Dim (cmd) or Bright (out) styling
+                lineEl.className = item.type === 'cmd' ? 'prompt-text' : 'output-text';
+                terminal.appendChild(lineEl);
 
-    const typedEl = document.getElementById('typed');
-    const cursor = document.getElementById('cursor');
-    let replaying = false;
+                if (prefersReduced) {
+                    lineEl.textContent = item.val;
+                    continue;
+                }
 
-    // Typewriter: prints one char at a time with small delays
-    async function typeLines(opts = { charDelay: 18, lineDelay: 420 }) {
-      typedEl.textContent = '';
-      cursor.style.display = 'inline-block';
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        for (let j = 0; j < line.length; j++) {
-          typedEl.textContent += line[j];
-          await new Promise(r => setTimeout(r, opts.charDelay + Math.random()*6));
+                // Type characters one by one
+                for (let c = 0; c < item.val.length; c++) {
+                    lineEl.textContent += item.val.charAt(c);
+                    await new Promise(r => setTimeout(r, charDelay + Math.random() * 10));
+                }
+
+                // Pause after line finishes
+                await new Promise(r => setTimeout(r, lineDelay + Math.random() * 80));
+            }
+
+            // Add the blinking cursor at the end
+            if (!prefersReduced) {
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                terminal.appendChild(cursor);
+            }
+            
+            // Auto-scroll logic
+            terminal.scrollTop = terminal.scrollHeight;
         }
-          typedEl.textContent += '\n';   // ✔ correct newline
-        await new Promise(r => setTimeout(r, opts.lineDelay + Math.random()*80));
-      }
-      // keep cursor visible but stop blinking sooner by removing animation (optional)
-      // cursor.style.animation = 'blink 900ms steps(2,start) infinite';
-    }
 
-    // initial run
-    typeLines();
-
-    // Controls
-    document.getElementById('replayBtn').addEventListener('click', () => {
-      if (replaying) return;
-      replaying = true;
-      typeLines().finally(() => { replaying = false; });
-    });
-
-    // Copy-to-clipboard for the GitHub lab link
-    const copyBtn = document.getElementById('copyBtn');
-    const openLab = document.getElementById('openLab');
-    const copied = document.getElementById('copied');
-    copyBtn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(openLab.href);
-        copied.style.display = 'inline';
-        setTimeout(() => { copied.style.display = 'none'; }, 1400);
-        copyBtn.focus();
-      } catch (err) {
-        // fallback
-        const tmp = document.createElement('textarea');
-        tmp.value = openLab.href;
-        document.body.appendChild(tmp);
-        tmp.select();
-        document.execCommand('copy');
-        document.body.removeChild(tmp);
-        copied.style.display = 'inline';
-        setTimeout(() => { copied.style.display = 'none'; }, 1400);
-      }
-    });
-
-    // Allow keyboard: Enter on OpenLab should open, Enter on copy button should copy
-    copyBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyBtn.click(); } });
-    document.getElementById('replayBtn').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.target.click(); } });
-
-    // Respect prefers-reduced-motion
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReduced.matches) {
-      // show static text immediately
-      typedEl.textContent = lines.join('\\n');
-      cursor.style.display = 'none';
-    }
-  </script>
+        // Start animation after 650ms
+        setTimeout(() => {
+            typeLines();
+        }, 650);
+    </script>
 </body>
 </html>
