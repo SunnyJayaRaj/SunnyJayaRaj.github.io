@@ -3,82 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaveRick | Aspiring Apigee Developer</title>
+    <title>MaveRick | Apigee Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         body {
             background-color: #0d1117;
+            background-image: radial-gradient(#1f2428 1px, transparent 1px);
+            background-size: 30px 30px; /* Creates a subtle grid effect */
             color: #c9d1d9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'JetBrains Mono', monospace; /* The Hacker Font */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
         .container {
             text-align: center;
-            max-width: 650px;
-            padding: 30px;
-            border: 1px solid #30363d;
-            border-radius: 10px;
-            background-color: #161b22;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            max-width: 600px;
+            padding: 40px;
+            border: 1px solid rgba(48, 54, 61, 0.7);
+            border-radius: 16px;
+            /* Glassmorphism Effect */
+            background-color: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
-        h1 { color: #58a6ff; margin-bottom: 5px; }
-        h3 { color: #79c0ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 30px;}
-        p { line-height: 1.6; font-size: 1.1em; }
-        .tagline { font-style: italic; color: #8b949e; margin-bottom: 25px; display: block; }
+        .avatar-glow {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #EA4335;
+            box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
+            margin-bottom: 20px;
+        }
+        h1 { color: #f0f6fc; margin-bottom: 5px; letter-spacing: -1px; }
+        .tagline { color: #8b949e; font-size: 0.9em; display: block; margin-bottom: 30px; }
         
-        /* Making the list look like tech tags */
-        ul { list-style: none; padding: 0; text-align: center; }
+        /* Tech Tags Styling */
+        ul { list-style: none; padding: 0; }
         li { 
             display: inline-block; 
-            margin: 5px; 
-            padding: 5px 12px; 
-            background: #21262d; 
-            border: 1px solid #30363d; 
-            border-radius: 20px; 
-            font-size: 0.9em;
+            margin: 6px; 
+            padding: 8px 16px; 
+            background: rgba(56, 139, 253, 0.1); 
+            border: 1px solid rgba(56, 139, 253, 0.4); 
+            border-radius: 6px; 
+            font-size: 0.85em;
+            color: #58a6ff;
         }
-        li strong { color: #58a6ff; }
-
+        
+        /* The Red Button */
         .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 24px;
-            background-color: #EA4335; /* Google Cloud Red/Orange color */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 35px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #EA4335, #B31412);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
-            transition: background 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover { background-color: #d93025; }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(234, 67, 53, 0.3);
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>👋 I'm MaveRick</h1>
-        <span class="tagline">a.k.a Sunny JayaRaj | The Curious API Explorer</span>
+        <img src="https://github.com/SunnyJayaRaj.png" alt="Profile" class="avatar-glow">
         
-        <p>
-            I don't just write code; I connect systems. <br>
-            My journey has evolved from general tech curiosity to a deep focus on <strong>API Management</strong>. 
-            I'm currently mastering the art of securing, analyzing, and mediating traffic using <strong>Google Cloud Apigee</strong>.
+        <h1>MaVeRick</h1>
+        <span class="tagline"> <i class="fas fa-terminal"></i> Apigee Developer | API Security | Open Source</span>
+        
+        <p style="line-height: 1.8; margin-bottom: 30px;">
+            The digital world speaks in APIs, and I'm the translator.<br>
+            I build, secure, and analyze the gateways that power modern apps using <strong>Google Cloud Apigee</strong>.
         </p>
 
-        <p>🚀 <strong>Mission:</strong> To become a certified Apigee Developer who builds robust digital gateways.</p>
+        <div style="text-align: left;">
+            <p style="text-align: center; color: #8b949e; margin-bottom: 15px;">— ARSENAL —</p>
+            <ul>
+                <li><i class="fab fa-google"></i> Apigee X</li>
+                <li><i class="fas fa-shield-alt"></i> OAuth 2.0</li>
+                <li><i class="fas fa-file-code"></i> OpenAPI 3.0</li>
+                <li><i class="fas fa-rocket"></i> Postman</li>
+            </ul>
+        </div>
 
-        <h3>🛠 The Toolkit</h3>
-        <ul>
-            <li><strong>Platform:</strong> Google Cloud Apigee X</li>
-            <li><strong>Protocols:</strong> REST, SOAP, HTTP/S</li>
-            <li><strong>Security:</strong> OAuth 2.0, API Keys, JWT</li>
-            <li><strong>Tools:</strong> Postman, Curl, Open API (Swagger)</li>
-        </ul>
-
-        <a href="https://github.com/SunnyJayaRaj/Apigee-Lab" class="btn">View My API Projects</a>
+        <a href="https://github.com/SunnyJayaRaj/Apigee-Lab" class="btn">
+            <i class="fab fa-github"></i> <span>Explore the Lab</span>
+        </a>
     </div>
 
 </body>
