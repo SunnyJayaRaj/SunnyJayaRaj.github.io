@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* 1. UNIVERSAL RESET: Makes spacing consistent on all browsers */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
+            /* These colors force Dark Mode for everyone, preserving your design */
             background-color: #0d1117;
             background-image: radial-gradient(#1f2428 1px, transparent 1px);
             background-size: 30px 30px;
@@ -18,18 +26,22 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
+            padding: 20px; /* Adds padding for mobile screens */
         }
+
         .container {
             text-align: center;
-            max-width: 600px;
-            padding: 40px;
+            width: 100%;
+            /* 2. WIDENED CONTAINER: Changed from 600px to 680px to prevent text wrapping */
+            max-width: 680px; 
+            padding: 45px 40px; /* Adjusted padding for balance */
             border: 1px solid rgba(48, 54, 61, 0.7);
             border-radius: 16px;
             background-color: rgba(22, 27, 34, 0.85);
             backdrop-filter: blur(10px);
             box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
+
         .avatar-glow {
             width: 120px;
             height: 120px;
@@ -38,21 +50,33 @@
             box-shadow: 0 0 20px rgba(234, 67, 53, 0.4);
             margin-bottom: 20px;
         }
+
         h1 { color: #f0f6fc; margin-bottom: 5px; letter-spacing: -1px; }
         
-        /* NEW: Style for the real name */
         .real-name {
             color: #8b949e;
             font-size: 0.9em;
-            margin-top: -5px;
+            margin-top: 5px;
             margin-bottom: 20px;
             display: block;
             font-style: italic;
         }
 
-        .tagline { color: #58a6ff; font-size: 0.9em; display: block; margin-bottom: 30px; font-weight: bold; }
+        .tagline { 
+            color: #58a6ff; 
+            font-size: 0.95em; 
+            display: block; 
+            margin-bottom: 30px; 
+            font-weight: bold; 
+        }
         
-        ul { list-style: none; padding: 0; }
+        p.bio {
+            line-height: 1.8; 
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        ul { list-style: none; padding: 0; margin-top: 10px;}
         li { 
             display: inline-block; 
             margin: 6px; 
@@ -82,21 +106,25 @@
             box-shadow: 0 10px 20px rgba(234, 67, 53, 0.3);
         }
 
-        /* NEW: Styles for the Contact Links (Error #3 Fix) */
         .social-links {
-            margin-top: 30px;
+            margin-top: 35px;
             padding-top: 20px;
             border-top: 1px solid rgba(48, 54, 61, 0.5);
         }
+        
+        /* 3. FIX FOR LINKEDIN LINE: Use !important to force remove underlines */
         .social-icon {
             color: #8b949e;
             font-size: 1.5em;
             margin: 0 15px;
             transition: color 0.2s, transform 0.2s;
+            text-decoration: none !important; /* Removes the line */
+            border: none !important;
         }
         .social-icon:hover {
             color: #EA4335;
             transform: scale(1.1);
+            text-decoration: none !important;
         }
     </style>
 </head>
@@ -110,13 +138,13 @@
         
         <span class="tagline"> <i class="fas fa-terminal"></i> Apigee Developer | API Security | Open Source</span>
         
-        <p style="line-height: 1.8; margin-bottom: 30px;">
+        <p class="bio">
             The digital world speaks in APIs, and I'm the translator.<br>
             I build, secure, and analyze the gateways that power modern apps using <strong>Google Cloud Apigee</strong>.
         </p>
 
         <div style="text-align: left;">
-            <p style="text-align: center; color: #8b949e; margin-bottom: 15px;">— ARSENAL —</p>
+            <p style="text-align: center; color: #8b949e; margin-bottom: 10px;">— ARSENAL —</p>
             <ul style="text-align: center;">
                 <li><i class="fab fa-google"></i> Apigee X</li>
                 <li><i class="fas fa-shield-alt"></i> OAuth 2.0</li>
