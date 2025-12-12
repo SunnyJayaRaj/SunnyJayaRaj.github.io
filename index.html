@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaveRick | Apigee Dev</title>
+
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* 1. UNIVERSAL RESET: Makes spacing consistent on all browsers */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,7 +16,6 @@
         }
 
         body {
-            /* These colors force Dark Mode for everyone, preserving your design */
             background-color: #0d1117;
             background-image: radial-gradient(#1f2428 1px, transparent 1px);
             background-size: 30px 30px;
@@ -26,15 +25,14 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px; /* Adds padding for mobile screens */
+            padding: 20px;
         }
 
         .container {
             text-align: center;
             width: 100%;
-            /* 2. WIDENED CONTAINER: Changed from 600px to 680px to prevent text wrapping */
-            max-width: 680px; 
-            padding: 45px 40px; /* Adjusted padding for balance */
+            max-width: 680px;
+            padding: 45px 40px;
             border: 1px solid rgba(48, 54, 61, 0.7);
             border-radius: 16px;
             background-color: rgba(22, 27, 34, 0.85);
@@ -51,43 +49,57 @@
             margin-bottom: 20px;
         }
 
-        h1 { color: #f0f6fc; margin-bottom: 5px; letter-spacing: -1px; }
-        
+        h1 {
+            color: #f0f6fc;
+            margin-bottom: 5px;
+            letter-spacing: -1px;
+        }
+
         .real-name {
             color: #8b949e;
             font-size: 0.9em;
-            margin-top: 5px;
-            margin-bottom: 20px;
+            margin: 5px 0 20px;
             display: block;
             font-style: italic;
         }
 
         .tagline { 
             color: #58a6ff; 
-            font-size: 0.95em; 
-            display: block; 
-            margin-bottom: 30px; 
-            font-weight: bold; 
+            font-size: 0.95em;
+            margin-bottom: 30px;
+            font-weight: bold;
         }
-        
-        p.bio {
-            line-height: 1.8; 
+
+        .bio {
+            line-height: 1.8;
             margin-bottom: 30px;
             font-size: 1rem;
         }
 
-        ul { list-style: none; padding: 0; margin-top: 10px;}
-        li { 
-            display: inline-block; 
-            margin: 6px; 
-            padding: 8px 16px; 
-            background: rgba(56, 139, 253, 0.1); 
-            border: 1px solid rgba(56, 139, 253, 0.4); 
-            border-radius: 6px; 
+        .arsenal-label {
+            text-align: center;
+            color: #8b949e;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 6px;
+            padding: 8px 16px;
+            background: rgba(56, 139, 253, 0.1);
+            border: 1px solid rgba(56, 139, 253, 0.4);
+            border-radius: 6px;
             font-size: 0.85em;
             color: #58a6ff;
         }
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -101,8 +113,9 @@
             font-weight: bold;
             transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn:hover { 
-            transform: translateY(-3px); 
+
+        .btn:hover {
+            transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(234, 67, 53, 0.3);
         }
 
@@ -111,47 +124,47 @@
             padding-top: 20px;
             border-top: 1px solid rgba(48, 54, 61, 0.5);
         }
-        
-        /* 3. FIX FOR LINKEDIN LINE: Use !important to force remove underlines */
+
         .social-icon {
             color: #8b949e;
             font-size: 1.5em;
             margin: 0 15px;
             transition: color 0.2s, transform 0.2s;
-            text-decoration: none !important; /* Removes the line */
-            border: none !important;
+            text-decoration: none !important;
         }
+
         .social-icon:hover {
             color: #EA4335;
             transform: scale(1.1);
-            text-decoration: none !important;
         }
     </style>
 </head>
-<body>
 
+<body>
     <div class="container">
-        <img src="https://github.com/SunnyJayaRaj.png" alt="Profile" class="avatar-glow">
+        <img src="https://github.com/SunnyJayaRaj.png" alt="Profile picture of MaveRick" class="avatar-glow">
         
         <h1>MaveRick</h1>
-        <span class="real-name">a.k.a "Sunny JayaRaj"</span>
+        <span class="real-name">also known as "Sunny JayaRaj"</span>
         
-        <span class="tagline"> <i class="fas fa-terminal"></i> Apigee Developer | API Security | Open Source</span>
+        <span class="tagline">
+            <i class="fas fa-terminal"></i> Apigee Developer | API Security | Open Source
+        </span>
         
         <p class="bio">
             The digital world speaks in APIs, and I'm the translator.<br>
-            I build, secure, and analyze the gateways that power modern apps using <strong>Google Cloud Apigee</strong>.
+            I build, secure, and analyze the gateways that power modern apps using 
+            <strong>Google Cloud Apigee</strong>.
         </p>
 
-        <div style="text-align: left;">
-            <p style="text-align: center; color: #8b949e; margin-bottom: 10px;">— ARSENAL —</p>
-            <ul style="text-align: center;">
-                <li><i class="fab fa-google"></i> Apigee X</li>
-                <li><i class="fas fa-shield-alt"></i> OAuth 2.0</li>
-                <li><i class="fas fa-file-code"></i> OpenAPI 3.0</li>
-                <li><i class="fas fa-rocket"></i> Postman</li>
-            </ul>
-        </div>
+        <p class="arsenal-label">ARSENAL</p>
+
+        <ul>
+            <li><i class="fab fa-google"></i> Apigee X</li>
+            <li><i class="fas fa-shield-alt"></i> OAuth 2.0</li>
+            <li><i class="fas fa-file-code"></i> OpenAPI 3.0</li>
+            <li><i class="fas fa-rocket"></i> Postman</li>
+        </ul>
 
         <a href="https://github.com/SunnyJayaRaj/Apigee-Lab" class="btn">
             <i class="fab fa-github"></i> <span>Explore the Lab</span>
@@ -166,6 +179,5 @@
             </a>
         </div>
     </div>
-
 </body>
 </html>
