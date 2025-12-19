@@ -1,13 +1,13 @@
 # 🌐 MaveRick | Personal Portfolio
 
-**Live Site:** [https://sunnyjayaraj.github.io](https://sunnyjayaraj.github.io)
+**Live Site:** [https://sunnyjayaraju.github.io](https://sunnyjayaraju.github.io)
 
 This repository contains the source code for my personal developer portfolio. It highlights my work and interests in **API Management, Apigee, and Open Source**.
 
 ---
 
 ## 🎨 Design Philosophy
-The site follows a **glassmorphism-inspired** design to keep the UI modern, minimal, and developer-focused.  
+The site features a **glassmorphism-inspired** design, maintaining a modern, minimal, and developer-focused UI.  
 JetBrains Mono is used throughout to maintain a clean, code-centric aesthetic.
 
 ---
@@ -31,10 +31,10 @@ To view or modify the site on your machine:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/SunnyJayaRaj/SunnyJayaRaj.github.io.git
+   git clone https://github.com/SunnyJayaRaju/SunnyJayaRaju.github.io.git
 
 2. Open the file: 
 - Navigate to the folder.
 - Open index.html in any web browser (Chrome, Safari, etc.).
 
-© 2025 Sunny JayaRaj. Code available for educational purposes.  
+© 2025 Sunny JayaRaju. Code available for educational purposes.  
